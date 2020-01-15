@@ -1,0 +1,48 @@
+version: '3'
+services:
+  app:
+    build: .
+    container_name: app
+    command: nodemon --watch js server.js
+    environment:
+      - NODE_ENV=production
+      - RHOST=redis
+    restart: always
+    ports:
+      - "3000:3000"
+      - "9229:9229"
+    networks:
+      - redis-net
+      - mongo-net
+    links:
+      - database
+      - redis
+    depends_on:
+      - redis
+      - database
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+  database:
+    image: 'mongo'
+    container_name: 'mongo-db'
+    ports:
+      - '27017-27019:27017-27019'
+    networks:
+      - mongo-net
+
+  redis:
+    image: redis:4.0.5-alpine
+    container_name: cache
+    command: ["redis-server", "--appendonly", "yes"]
+    expose:
+      - 6379
+    networks:
+      - redis-net
+networks:
+  redis-net:
+  mongo-net:
+    driver: bridge
+volumes:
+  redis-data:
+
