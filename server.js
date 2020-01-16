@@ -1,13 +1,22 @@
 const express = require('express');
+global.__basedir = __dirname;
 const helmet = require("helmet");
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const Response = require("./Utilities/response_generator");
+const { Application_Responses } = require('./Utilities/enums');
 const routes = require('./Http/Routes/index');
 const { connectDB } = require("./Utilities/mongo_db");
+const Agenda = require("agenda");
+const { mongoDBUrl } = require("./Utilities/constants");
+const agenda = new Agenda({ db: { address: mongoDBUrl } });
 const app = express();
 
 //Bootstrap Necessary before express
 connectDB();
+(async function () { // IIFE to give access to async/await
+    await agenda.start();
+})();
 
 
 app.use(logger('dev'));
@@ -18,7 +27,7 @@ routes.forEach((route) => {
 });
 app.use(function (err, req, res, next) {
     console.error(`Server Error: ${err.stack}`);
-    return res.json("A Server Error occurred, try again later ")
+    return new Response(Application_Responses["SERVER-ERROR"], null, err, null, res).getResponse();
 });
 
 

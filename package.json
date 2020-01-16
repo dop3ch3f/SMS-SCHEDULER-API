@@ -20,16 +20,29 @@
   },
   "homepage": "https://github.com/dop3ch3f/africave-api#readme",
   "dependencies": {
+    "@hapi/joi": "^17.0.2",
+    "agenda": "^2.3.0",
     "axios": "^0.19.1",
+    "bcrypt": "^3.0.7",
     "body-parser": "^1.19.0",
     "bull": "^3.12.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "helmet": "^3.21.2",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.27",
     "mongodb": "^3.4.1",
     "mongoose": "^5.8.7",
     "morgan": "^1.9.1",
     "node-cron": "^2.0.3",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "satelize": "^0.2.0",
+    "twilio": "^3.39.2",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/bull": "^3.10.6",
+    "jest": "^24.9.0",
+    "supertest": "^4.0.2"
   }
 }

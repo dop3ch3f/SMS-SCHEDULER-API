@@ -1,16 +1,15 @@
-version: '3'
+version: "3"
 services:
   app:
     build: .
     container_name: app
-    command: nodemon --watch js server.js
+    command: nodemon --legacy-watch server.js
     environment:
       - NODE_ENV=production
       - RHOST=redis
     restart: always
     ports:
       - "3000:3000"
-      - "9229:9229"
     networks:
       - redis-net
       - mongo-net
@@ -24,10 +23,10 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules
   database:
-    image: 'mongo'
-    container_name: 'mongo-db'
+    image: "mongo"
+    container_name: "mongo-db"
     ports:
-      - '27017-27019:27017-27019'
+      - "27017-27019:27017-27019"
     networks:
       - mongo-net
 
@@ -45,4 +44,3 @@ networks:
     driver: bridge
 volumes:
   redis-data:
-
