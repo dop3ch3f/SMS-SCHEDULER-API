@@ -8,15 +8,15 @@ class RepositoryResponse {
         this.status = status;
     }
 
-    getError = () => this.error;
+    getError() { return this.error };
 
-    getRepository = () => this.repository;
+    getRepository() { return this.repository };
 
-    getMessage = () => this.message;
+    getMessage() { return this.message };
 
-    getData = () => this.data;
+    getData() { return this.data };
 
-    getAction =() => this.action;
+    getAction() { return this.action };
 }
 
 module.exports = RepositoryResponse;

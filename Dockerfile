@@ -12,3 +12,5 @@ RUN npm install -g nodemon
 RUN npm install
 
 COPY . .
+
+RUN npm run test
