@@ -3,7 +3,7 @@ services:
   app:
     build: .
     container_name: app
-    command: nodemon --legacy-watch server.js
+    command: sh -c "npm run test && nodemon --legacy-watch server.js"
     environment:
       - NODE_ENV=production
       - RHOST=redis
