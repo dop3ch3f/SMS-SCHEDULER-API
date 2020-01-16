@@ -51,8 +51,8 @@ class UtilitiesRepository {
     convert24HrsToCronExpression(time) {
         try {
             const [hour, minute] = time.split(":");
-            // return new RepositoryResponse('util', true, "success", `${minute} ${hour} * * *`, null, null);
-            return new RepositoryResponse('util', true, "success", "1 * * * * *", null, null);
+            return new RepositoryResponse('util', true, "success", `${minute} ${hour} * * *`, null, null);
+            // return new RepositoryResponse('util', true, "success", "1 * * * * *", null, null);
         } catch (error) {
             console.log(error);
             return new RepositoryResponse('util', false, "Error occurred", null, error, null);
