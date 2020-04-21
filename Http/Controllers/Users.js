@@ -4,10 +4,8 @@ const courseModel = require("../Models/Courses");
 const Response = require("../../Utilities/response_generator");
 const { Application_Responses } = require('../../Utilities/enums');
 const Validations = require("../Validations/User");
-// const Queue = require('bull');
 const Agenda = require('agenda');
 const { mongoDBUrl } = require("../../Utilities/constants");
-// const subscriptionQueue = new Queue('subscription', 'redis://cache:6379', {});
 const agenda = new Agenda({ db: { address: mongoDBUrl } });
 
 const UtilitiesRepository = require("../../Repositories/utilities_repository");
