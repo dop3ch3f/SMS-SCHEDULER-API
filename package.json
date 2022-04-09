@@ -41,7 +41,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "helmet": "^3.21.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.27",
     "mongodb": "^3.4.1",
     "mongoose": "^5.8.7",
